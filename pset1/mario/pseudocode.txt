@@ -1,0 +1,13 @@
+//ENG
+Request height from user and save in variable
+    If the number is greater than 0 and less than 9, then go further
+    Otherwise, go back a step.
+Create a loop with a number of steps equal to a variable.
+In the body of the loop print the number #.
+
+//RUS
+Запросить высоту у пользователя и сохранить в переменной
+    Если число больше 0 и меньше 9, то пройти дальше
+    Иначе вернуться на шаг назад.
+Создать цикл с кличествоим шагов равным переменной.
+В теле цикла вывести на печать количество #.

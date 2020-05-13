@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+        <div style="height: 100px; margin-bottom: 15px">
+    {% if error == 0 %}
+            <p>Symbol: A-Z</p>
+            <p>Sorry no such company</p>
+    {% elif error == 1 %}
+            <p>Shares should be more 0</p>
+    {% elif error == 2 %}
+            <p>Sorry you have insufficient funds</p>
+    {% elif error == 3 %}
+            <p>Positive integer!</p>
+    {% endif %}
+        </div>
+    <form style="height: 300px" action="/buy" method="post">
+        <div class="form-group">
+            <input id="buy_symbol" autocomplete="off" autofocus class="form-control" name="buy_symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input id="shares" class="form-control" name="shares" placeholder="Shares" type="text">
+        </div>
+        <button id="buy" class="btn btn-primary" type="submit" disabled=true>Buy</button>
+    </form>
+
+    <script>
+        document.querySelector("#buy_symbol" && "#shares").onkeyup = function() {
+            if (document.querySelector("#buy_symbol" && "#shares").value === '') {
+                document.querySelector("#buy").disabled = true;
+            } else {
+                document.querySelector("#buy").disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

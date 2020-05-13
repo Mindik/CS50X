@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {% if error == 1 %}
+        <div style="margin-bottom: 15px">Symbol: A-Z</div>
+    {% else %}
+        <div style="margin-bottom: 15px">Example: AAPL</div>
+    {% endif %}
+
+
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input id="symbol" autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button id="qu" class="btn btn-primary" type="submit" disabled=true>Quote</button>
+    </form>
+
+    <script>
+        document.querySelector("#symbol").onkeyup = function() {
+            if (document.querySelector("#symbol").value === '') {
+                document.querySelector("#qu").disabled = true;
+            } else {
+                document.querySelector("#qu").disabled = false;
+            }
+        }
+    </script>
+
+{% endblock %}

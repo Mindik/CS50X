@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    {% if mess == 0 %}
+        <div style="margin-bottom: 15px">this name is already in use</div>
+    {% elif mess == 1 %}
+        <div style="margin-bottom: 15px">password must be longer than 8 characters</div>
+    {% elif mess == 2 %}
+        <div style="margin-bottom: 15px">password characters A-Z a-z 0-9 and min one A-Z, and one 0-1</div>
+    {% elif mess == 3 %}
+        <div style="margin-bottom: 15px">password mismatch</div>
+    {% endif %}
+
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input id="user_name" autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input id="pass" class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input id="pass2" class="form-control" name="check_password" placeholder="Repeat password" type="password">
+        </div>
+        <button id="sub" class="btn btn-primary" type="submit" disabled=true>Register</button>
+    </form>
+
+    <script>
+        document.querySelector("#user_name" && "#pass" && "#pass2").onkeyup = function() {
+            if (document.querySelector("#user_name" && "#pass" && "#pass2").value === '') {
+                document.querySelector("#sub").disabled = true;
+            } else {
+                document.querySelector("#sub").disabled = false;
+            }
+        }
+    </script>
+    {% if mess == 0 %}
+        <script>
+            alert("Username is not available")
+        </script>
+    {% endif %}
+{% endblock %}
+
+

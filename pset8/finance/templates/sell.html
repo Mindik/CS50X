@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div style="height: 100px; margin-bottom: 15px">
+    {% if error == 1 %}
+            <p>Integer!</p>
+    {% elif error == 2 %}
+            <p>You do not have as many shares</p>
+    {% elif error == 3 %}
+            <p>Positive </p>
+    {% elif error == 3 %}
+
+    {% endif %}
+        </div>
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select class="form-control" name="symbol">
+                <option disabled="" selected="" value="">Symbol</option>
+                {% for b in symbols %}
+                    <option value="{{ b["symbol"] }}">{{ b["symbol"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input id="sha" autocomplete="off" class="form-control" min="0" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button id="sell" class="btn btn-primary" type="submit" disabled=true>Sell</button>
+    </form>
+
+    <script>
+        document.querySelector("#sha").onkeyup = function() {
+            if (document.querySelector("#sha").value === '0') {
+                document.querySelector("#sell").disabled = true;
+            } else {
+                document.querySelector("#sell").disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

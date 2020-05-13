@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in list_dict %}
+                <tr>
+                    <td>{{ a["Symbol"] }}</td>
+                    <td>{{ a["Name"] }}</td>
+                    <td>{{ a["Shares"] }}</td>
+                    <td>{{ a["Price"] }}</td>
+                    <td>{{ a["Total"] }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th scope="row">Cash</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-weight: bolder;">{{ cash }}</td>
+                </tr>
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td style="font-weight: bolder;">{{ sum_total }}</td>
+                    </tr>
+                </tfoot>
+            </tbody>
+        </table>
+
+{% endblock %}
