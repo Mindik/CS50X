@@ -1,3 +1,0 @@
-export API_KEY=pk_9dac6ce425d14a869e962a86997c1bc9
-
-phpliteadmin finance.db
