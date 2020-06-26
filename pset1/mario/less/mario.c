@@ -21,7 +21,7 @@ int main(void)
             printf(" ");
 
         }
-        // printf "#" i + 1 (1. 0 + 1 = 1
+        // printf "#" i + 1 (1. 0 + 1 = 1)
         for (int a = 0; a < i + 1; a++)
         {
             printf("#");
