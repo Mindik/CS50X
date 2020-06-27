@@ -31,3 +31,8 @@ The tasks are divided into sets of problems. Each set of problems has several ta
     * [Runoff](pset3/runoff)
     * [Tideman](pset3/tideman)
    
+5. [Problem set 4](pset4)
+
+    * [filter](pset4/filter/less)
+    * [filter](pset4/filter/more)
+    * [recover](pset4/recover)
