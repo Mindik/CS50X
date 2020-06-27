@@ -19,9 +19,15 @@ The tasks are divided into sets of problems. Each set of problems has several ta
     * [hello](pset1/hello)
     * [mario](pset1/mario)
 
-2. [Problem set 2](pset2)
+3. [Problem set 2](pset2)
 
     * [readability](pset2/readability)
     * [caesar](pset2/caesar)
     * [substitution](pset2/substitution)
+    
+4. [Problem set 3](pset3)
+
+    * [Plurality](pset3/plurality)
+    * [Runoff](pset3/runoff)
+    * [Tideman](pset3/tideman)
    
