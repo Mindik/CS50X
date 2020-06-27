@@ -103,6 +103,7 @@ bool vote(int rank, string name, int ranks[])
 {
     for (int a = 0; a < candidate_count; a++)
     {
+        // If a candidate with the same name is found, then update the array ranks
         if (strcmp(candidates[a], name) == 0)
         {
             ranks[rank] = a;
@@ -114,7 +115,8 @@ bool vote(int rank, string name, int ranks[])
 
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
-{
+{   
+    // We update the number of voters who prefer one candidate to another
     for (int a = 0; a < candidate_count; a++)
     {
         for (int b = a + 1; b < candidate_count; b++)
@@ -131,7 +133,8 @@ void add_pairs(void)
     for (int a = 0; a < candidate_count; a++)
     {
         for (int b = candidate_count - 1; b > a; b--)
-        {
+        {   
+            // Compare the number of preferences for pairs of candidates and write pairs
             if (preferences[a][b] > preferences[b][a])
             {
                 pairs[pair_count].winner = a;
@@ -171,13 +174,16 @@ void sort_pairs(void)
 void lock_pairs(void)
 {
     for (int y = 0; y < pair_count; y++)
-    {
+    {   
+        // You can immediately block the first bunch
         if (y == 0)
         {
             locked[pairs[y].winner][pairs[y].loser] = true;
         }
+        // All other cases we will check
         if (y > 0)
-        {
+        {   
+            // If the check function returns false, then locked
             if (check_path(pairs[y].winner, pairs[y].loser, y) == false)
             {
                 locked[pairs[y].winner][pairs[y].loser] = true;
@@ -186,9 +192,10 @@ void lock_pairs(void)
     }
     return;
 }
-
+// Check function so as not to circle
 bool check_path(int win, int lose, int step)
-{
+{   
+    // We check the whole chain, if it closes, then we will return true
     for (int a = step - 1; a >= 0; a--)
     {
         if (pairs[a].loser == win && locked[pairs[a].winner][pairs[a].loser] == true)
