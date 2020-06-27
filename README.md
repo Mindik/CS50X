@@ -36,3 +36,7 @@ The tasks are divided into sets of problems. Each set of problems has several ta
     * [filter](pset4/filter/less)
     * [filter](pset4/filter/more)
     * [recover](pset4/recover)
+    
+6. [Problem set 5](pset5)
+
+    * [speller](pset5/speller)
