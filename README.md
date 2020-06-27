@@ -18,3 +18,10 @@ The tasks are divided into sets of problems. Each set of problems has several ta
     * [credit](pset1/credit)
     * [hello](pset1/hello)
     * [mario](pset1/mario)
+
+2. [Problem set 2](pset2)
+
+    * [readability](pset2/readability)
+    * [caesar](pset2/caesar)
+    * [substitution](pset2/substitution)
+   
