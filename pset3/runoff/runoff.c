@@ -127,11 +127,14 @@ int main(int argc, string argv[])
 
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
-{
+{   
+    // Go through all the candidates
     for (int a = 0; a < candidate_count; a++)
-    {
+    {   
+        // If we find a candidate with that name
         if (strcmp(candidates[a].name, name) == 0)
-        {
+        {   
+            // We save the found candidate to a certain rank for the measurer
             preferences[voter][rank] = a;
             return true;
         }
@@ -141,14 +144,17 @@ bool vote(int voter, int rank, string name)
 
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
-{
+{   
+    // We go through each voter
     for (int i = 0; i < voter_count; i++)
     {
         int can = 0;
+        // If the candidate is NOT expelled, then give him a vote
         if (candidates[preferences[i][can]].eliminated == false)
         {
             candidates[preferences[i][can]].votes++;
         }
+        // If the candidate is expelled, then we seek NOT excluded and give him a vote
         else if (candidates[preferences[i][can]].eliminated == true)
         {
             while (candidates[preferences[i][can]].eliminated == true)
@@ -166,7 +172,7 @@ bool print_winner(void)
 {
     int vote_max = 0;
     int vote_mid = voter_count / 2;
-
+    // Find the maximum votes
     for (int d = 0; d < candidate_count; d++)
     {
         if (candidates[d].votes > vote_max)
@@ -174,8 +180,10 @@ bool print_winner(void)
             vote_max = candidates[d].votes;
         }
     }
+    // If the maximum vote is more than half
     if (vote_max > vote_mid)
-    {
+    {   
+        // Find the name of this candidate and type his name
         for (int z = 0; z < candidate_count; z++)
         {
             if (candidates[z].votes == vote_max)
@@ -191,10 +199,12 @@ bool print_winner(void)
 
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
-{
+{   
+    // Minimum for the candidate
     int vote_min = voter_count;
     for (int y = 0; y < candidate_count; y++)
-    {
+    {   
+        // If the candidate is not excluded and his number of votes is less than the current minimum, then update the minimum
         if (candidates[y].eliminated == false && candidates[y].votes < vote_min)
         {
             vote_min = candidates[y].votes;
@@ -205,7 +215,8 @@ int find_min(void)
 
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
-{
+{   
+    // We check all candidates not excluded for the equality of their votes
     for (int q = 0; q < candidate_count; q++)
     {
         if (candidates[q].eliminated == false && candidates[q].votes != min)
@@ -219,7 +230,8 @@ bool is_tie(int min)
 
 // Eliminate the candidate (or candidiates) in last place
 void eliminate(int min)
-{
+{   
+    // If the number of votes of the candidate is equal to the minimum, then exclude this candidate 
     for (int r = 0; r < candidate_count; r++)
     {
         if (candidates[r].eliminated == false && candidates[r].votes == min)
