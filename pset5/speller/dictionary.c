@@ -10,7 +10,7 @@
 
 #include "dictionary.h"
 
-//Prototypes
+//Prototypes hash-function
 uint32_t murmur3_32(const void *_key, uint32_t len, uint32_t seed);
 
 // Represents a node in a hash table
@@ -32,9 +32,12 @@ int words;
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
+    // len word in array
     char check_word[strlen(word)];
     uint32_t lena = strlen(word);
+    // Copy strings
     strcpy(check_word, word);
+    // If the character is a letter, then change case
     for (int a = 0; a < lena + 1; a++)
     {
         if (isalpha(check_word[a]))
@@ -42,10 +45,11 @@ bool check(const char *word)
             check_word[a] = tolower(check_word[a]);
         }
     }
+    // Get a hash for a word
     unsigned int hash_c = hash(check_word);
 
     node *cursor = table[hash_c];
-
+    // If the word in the table does not match, then check with all other words
     while (cursor != NULL)
     {
         if (strcasecmp(cursor->word, check_word) == 0)
@@ -61,33 +65,39 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     uint32_t len_check = strlen(word);
+    // Hash-function and solt 111 :)
     return murmur3_32(word, len_check, 111) % N;
 }
 
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
+    // Fill in the whole table NULL
     for (int y = 0; y < N; y++)
     {
         table[y] = NULL;
     }
-
+    // Open file dictionary for read
     FILE *fileDic = fopen(dictionary, "r");
+    // If error open
     if (fileDic == NULL)
     {
         printf("Dictionary file does not open!\n");
         return 1;
     }
     char buffer[LENGTH];
-
+    // Reads a word from a file until it finds the end of a line
     while (fscanf(fileDic, "%s", buffer) != EOF)
     {
+        // Allocates memory for a new node
         node *new_node = malloc(sizeof(node));
+        // Copy word from buffer in new_node word
         strcpy(new_node->word, buffer);
+        // Toggle point to NULL
         new_node->next = NULL;
-
+        // Get hash for word from buffer
         unsigned int hash_n = hash(buffer);
-
+        // If the table is full, then move the pointer to an empty value and save 
         if (table[hash_n] != NULL)
         {
             for (node *b = table[hash_n]; b != NULL; b = b->next)
