@@ -53,3 +53,11 @@ The tasks are divided into sets of problems. Each set of problems has several ta
     * [Credit](pset6/credit)
     * [Readability](pset6/readability)
     * [DNA](pset6/dna)
+    
+##### Python + SQLite
+
+8. [Problem set 7](pset7)
+
+    * [Movies](pset7/movies)
+    * [Houses](pset7/houses)
+    
