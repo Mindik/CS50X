@@ -48,8 +48,7 @@ The tasks are divided into sets of problems. Each set of problems has several ta
 7. [Problem set 6](pset6)
 
     * [Hello](pset6/hello)
-    * [Mario](pset6/mario/less)
-    * [Mario](pset6/mario/more)
+    * [Mario](pset6/mario)
     * [Cash](pset6/cash)
     * [Credit](pset6/credit)
     * [Readability](pset6/readability)
