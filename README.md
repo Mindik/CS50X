@@ -8,6 +8,8 @@ Harvard University's introduction to the intellectual enterprises of computer sc
 
 The tasks are divided into sets of problems. Each set of problems has several tasks. Tasks marked “more” are optional.
 
+##### C
+
 1. [Problem set 0](pset0)
     
     * [Scratch](pset0/scratch) 
@@ -40,3 +42,15 @@ The tasks are divided into sets of problems. Each set of problems has several ta
 6. [Problem set 5](pset5)
 
     * [speller](pset5/speller)
+
+##### Python
+
+7. [Problem set 6](pset6)
+
+    * [Hello](pset6/hello)
+    * [Mario](pset6/mario/less)
+    * [Mario](pset6/mario/more)
+    * [Cash](pset6/cash)
+    * [Credit](pset6/credit)
+    * [Readability](pset6/readability)
+    * [DNA](pset6/dna)
